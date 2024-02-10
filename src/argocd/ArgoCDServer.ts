@@ -91,17 +91,7 @@ export class ArgoCDServer {
   }
 
   async getAppCollection(): Promise<AppCollection> {
-    const fields = [
-      'items.metadata.name',
-      'items.spec.source.path',
-      'items.spec.source.repoURL',
-      'items.spec.source.targetRevision',
-      'items.spec.source.helm',
-      'items.spec.source.kustomize',
-      'items.status.sync.status'
-    ];
-
-    let responseJson = await this.api('v1/applications', [`fields=${fields.join(',')}`]);
+    let responseJson = await this.api('v1/applications');
     return new AppCollection(responseJson.items);
   }
 

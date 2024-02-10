@@ -13614,16 +13614,7 @@ class ArgoCDServer {
     }
     getAppCollection() {
         return __awaiter(this, void 0, void 0, function* () {
-            const fields = [
-                'items.metadata.name',
-                'items.spec.source.path',
-                'items.spec.source.repoURL',
-                'items.spec.source.targetRevision',
-                'items.spec.source.helm',
-                'items.spec.source.kustomize',
-                'items.status.sync.status'
-            ];
-            let responseJson = yield this.api('v1/applications', [`fields=${fields.join(',')}`]);
+            let responseJson = yield this.api('v1/applications');
             return new AppCollection_1.AppCollection(responseJson.items);
         });
     }
