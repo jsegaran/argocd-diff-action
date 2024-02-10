@@ -13469,7 +13469,6 @@ class AppCollection {
     }
     filterByRepo(repoMatch) {
         return new AppCollection(this.apps.filter(app => {
-            console.log(app);
             return app.spec.source.repoURL.includes(repoMatch);
         }));
     }

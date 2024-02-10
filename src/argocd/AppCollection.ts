@@ -22,7 +22,6 @@ export class AppCollection {
   filterByRepo(repoMatch: string): AppCollection {
     return new AppCollection(
       this.apps.filter(app => {
-        console.log(app);
         return app.spec.source.repoURL.includes(repoMatch);
       })
     );
