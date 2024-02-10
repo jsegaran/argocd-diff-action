@@ -1,4 +1,5 @@
 import { App } from './App';
+import * as core from '@actions/core';
 
 export class AppCollection {
   apps: App[];
@@ -20,6 +21,7 @@ export class AppCollection {
   }
 
   filterByRepo(repoMatch: string): AppCollection {
+    core.info(`Filtering ${this.apps.length} apps by repo: ${repoMatch}`);
     return new AppCollection(
       this.apps.filter(app => {
         return app.spec.source.repoURL.includes(repoMatch);
@@ -28,6 +30,7 @@ export class AppCollection {
   }
 
   filterByTargetRevision(targetRevisions: string[] = ['master', 'main', 'HEAD']): AppCollection {
+    core.info(`Filtering ${this.apps.length} apps to target revision: ${targetRevisions}`);
     return new AppCollection(
       this.apps.filter(app => {
         return targetRevisions.includes(app.spec.source.targetRevision);
