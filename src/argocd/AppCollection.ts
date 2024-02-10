@@ -33,7 +33,7 @@ export class AppCollection {
     core.info(`Filtering ${this.apps.length} apps to target revision: ${targetRevisions}`);
     return new AppCollection(
       this.apps.filter(app => {
-        return targetRevisions.includes(app.spec.source.targetRevision);
+        return targetRevisions.includes(app.spec.source.targetRevision || 'HEAD');
       })
     );
   }
